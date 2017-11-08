@@ -2,10 +2,12 @@ from django.db import models
 
 # Create your models here.
 
+# when a new provider is created -- create a key pair and store the id on the chain
 class Provider(models.Model):
     first_name = models.CharField(max_length = 20)
     last_name = models.CharField(max_length = 20)
 
+# when a new patient is created -- create a key pair and store the id on the chain
 class Patient(models.Model):
     first_name = models.CharField(max_length = 20)
     last_name = models.CharField(max_length = 20)
