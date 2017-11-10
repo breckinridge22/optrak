@@ -6,7 +6,7 @@ healthcare providers to securely exchange patient opioid prescription informatio
 
 Installation Instruction:
 
-1. Ensure Djano is installed on your local machine.
+1. Ensure Django is installed on your local machine.
 2. Install pip if you need to update any python libraries.
 3. Clone the repository
 
