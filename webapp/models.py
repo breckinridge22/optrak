@@ -13,6 +13,7 @@ class Patient(models.Model):
     last_name = models.CharField(max_length = 20)
 
 class Prescription(models.Model):
+    #dbdbdb
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, blank=True, null=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE, blank=True, null=True)
     drugId = models.IntegerField(default = 0)
