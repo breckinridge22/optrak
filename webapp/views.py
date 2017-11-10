@@ -10,7 +10,7 @@ def providerDashboard(request):
     return HttpResponse("Provider Dashboard")
 
 def patientDashboard(request):
-    return HttpResponse("Provider Dashboard")
+    return HttpResponse("Patient Dashboard")
 
 def patientPrescriptions(request):
     return HttpResponse("Patient Prescriptions")
