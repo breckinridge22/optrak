@@ -1,4 +1,4 @@
 #!/bin/bash
-python3 /project/optrak/manage.py makemigrations
-python3 /project/optrak/manage.py migrate
-python3 /project/optrak/manage.py runserver 0.0.0.0:8000
+python /project/optrak/manage.py makemigrations
+python /project/optrak/manage.py migrate
+python /project/optrak/manage.py runserver 0.0.0.0:8000

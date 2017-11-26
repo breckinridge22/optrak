@@ -3,6 +3,10 @@ version: '3'
 services:
   db:
     image: zhangpn/postgres
+  testrpc:
+    build: docker/testrpc
+    ports:
+      - "8545:8545"
   web:
     build: docker
     volumes:
@@ -11,4 +15,5 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - testrpc
     command: ["/project/optrak/docker/wait-for-db.sh", "db:5432", "--", "/project/optrak/docker/run-python.sh"]
