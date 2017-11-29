@@ -3,8 +3,14 @@ from django.db import models
 # Create your models here.
 
 class Provider(models.Model):
+    name = models.CharField(max_length = 20)
+
+# when a new provider is created -- create a key pair and store the id on the chain
+class Physician(models.Model):
     first_name = models.CharField(max_length = 20)
     last_name = models.CharField(max_length = 20)
+    physicianID = models.IntegerField(max_length = 20)
+    
 
 class Patient(models.Model):
     first_name = models.CharField(max_length = 20)
