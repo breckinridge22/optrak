@@ -1,6 +1,5 @@
 # optrak
 
-<<<<<<< HEAD
 This program represents a proof of concept of a web application that would allow
 healthcare providers to securely exchange patient opioid prescription information.
 
@@ -25,9 +24,3 @@ Database Setup:
   - CREATE ROLE doctor WITH LOGIN PASSWORD 'optrak';
 5. Grant user all privleges on the table
   - GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO doctor;
-=======
-## Setting up project with Docker
-- Download docker on host machine (and boot2docker if using MacOS)
-- Open this directory in terminal and run `chmod +x docker/wait-for-db.sh && chmod +x docker/run-python.sh`
-- Run `docker-compose up` and visit app on host machine at `localhost:8000`
->>>>>>> 32327e215d99372e096a396f4bb2eee029e5881f
