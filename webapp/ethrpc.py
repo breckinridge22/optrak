@@ -16,7 +16,7 @@ compiled_sol = compile_source(contract_source_code) # Compiled source code
 contract_interface = compiled_sol['<stdin>:Optrak']
 
 # web3.py instance
-w3 = Web3(HTTPProvider('http://localhost:8545')) # TODO: configure settings and change this to settings.TESTRPC_URL
+w3 = Web3(HTTPProvider('http://testrpc:8545')) # TODO: configure settings and change this to settings.TESTRPC_URL
 
 # Instantiate and deploy contract
 contract = w3.eth.contract(contract_interface['abi'], bytecode=contract_interface['bin'])
