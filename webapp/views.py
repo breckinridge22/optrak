@@ -4,7 +4,6 @@ def login(request):
     return HttpResponse("Login to Optrak")
 
 def sign_up(request):
-    # store their public key on the blockchain
     return HttpResponse("Sign up for Optrak")
 
 def providerDashboard(request):
