@@ -1,6 +1,5 @@
 # optrak
 
-<<<<<<< HEAD
 This program represents a proof of concept of a web application that would allow
 healthcare providers to securely exchange patient opioid prescription information.
 
