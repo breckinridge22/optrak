@@ -1,0 +1,2 @@
+pip install py-solc
+pip install web3
