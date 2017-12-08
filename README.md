@@ -38,4 +38,6 @@ Run Webapp
   - python3 manage.py migrate
 3. Run app server
   - python3 manage.py runserver
+4. Load in web browser
+  - localhost:8000
 
