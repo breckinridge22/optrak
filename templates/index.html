@@ -11,22 +11,30 @@
   </div>
   <div class="form">
     <h2>Login to your account</h2>
-      <form method="post" action="{% url 'webapp:login' %}">
+      <form method="post" action="{% url 'webapp:index' %}">
         {% csrf_token %}      
         <input type="text" placeholder="Username" name="username" />
       <input type="password" placeholder="Password" name="password" />
-      <button>Login</button>
+      <button name="login">Login</button>
     </form>
   </div>
-  <div class="form">
+  {% if registered %}
+    <h1>Thank you for registering!</h1>
+  {% else %}
+    <div class="form">
     <h2>Create an account</h2>
-    <form>
-      <input type="text" placeholder="Username"/>
-      <input type="password" placeholder="Password"/>
-      <input type="email" placeholder="Email Address"/>
-      <button>Register</button>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+
+      <input type="text" placeholder="Username" name="username"/>
+      <input type="password" placeholder="Password" name="password"/>
+      <input type="email" placeholder="Email Address" name="email"/>
+      <button name="register">Register</button>
     </form>
   </div>
+  {% endif %}
+
   <div class="cta"><a href="#">Forgot your password?</a></div>
 </div>
 
