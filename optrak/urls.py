@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from simulation.resources import PrescriptionResource
+
+prescription_resource = PrescriptionResource()
 
 urlpatterns = [
     url(r'^', include('webapp.urls', namespace="webapp")),
+    url(r'^simulation/', include(prescription_resource.urls)),
     url(r'^admin/', admin.site.urls),
 ]
