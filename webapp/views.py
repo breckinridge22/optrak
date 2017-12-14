@@ -1,4 +1,13 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from webapp.forms import UserForm
+
+# Extra Imports for the Login and Logout Capabilities
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
     if request.method == 'POST':
@@ -62,6 +71,7 @@ def handleRegister(request):
         # One of the forms was invalid if this else gets called.
         print(user_form.errors)
         return HttpResponse('Your account is not registered....')
+
 
 
 def sign_up(request):
