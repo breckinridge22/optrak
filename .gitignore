@@ -15,3 +15,6 @@ local_settings.py
 .python-version
 
 .DS_Store
+
+*.out
+.eggs/
