@@ -5,7 +5,7 @@ from webapp.forms import UserForm
 # Extra Imports for the Login and Logout Capabilities
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
@@ -82,7 +82,7 @@ def providerDashboard(request):
     return HttpResponse('Provider Dashboard')
 
 def patientDashboard(request):
-    return HttpResponse('Patient Dashboard')
+    return render(request, 'page-user.html', {})
 
 def patientPrescriptions(request):
     return HttpResponse('Patient Prescriptions')
