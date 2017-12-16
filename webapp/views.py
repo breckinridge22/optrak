@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from webapp.forms import UserForm
 
@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django import forms
 
 
 def index(request):
@@ -34,7 +36,7 @@ def handleLogin(request):
             login(request,user)
             # Send the user back to some page.
             # In this case their homepage.
-            return HttpResponseRedirect(reverse('webapp:index'))
+            return HttpResponseRedirect(reverse('webapp:providerDashboard'))
         else:
             # If account is not active:
             return HttpResponse('Your account is not active.')
@@ -54,23 +56,39 @@ def handleRegister(request):
     if user_form.is_valid():
 
         # Save User Form to Database
-        user = user_form.save()
+        user = user_form.cleaned_data
+        username = user['username']
+        password = user['password']
+        email = user['email']
+
+        # check if password is hashed
+        if not(User.objects.filter(username=username).exists() and User.objects.filter(email=email).exists()):
+            
+            User.objects.create_user(username, email, password)
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect(reverse('webapp:providerDashboard'))
+        else:
+            raise forms.ValidationError()
+
 
         # Hash the password
-        user.set_password(user.password)
+        # user.set_password(user.password)
 
         # Update with Hashed password
-        user.save()
-        print('----------------------------------------registering-----------' + user.password)
+        # user.save()
+        # print('----------------------------------------registering-----------' + user.password)
 
         # Registration Successful!
         registered = True
-        return render(request, 'index.html', {'user_form': user_form, 'registered': registered})
+        # return render(request, 'index.html', {'user_form': user_form, 'registered': registered})
 
     else:
         # One of the forms was invalid if this else gets called.
-        print(user_form.errors)
-        return HttpResponse('Your account is not registered....')
+        user_form = UserForm()
+        
+    print(user_form.errors)
+    return render(request, 'error.html', {'form': user_form})
 
 
 
